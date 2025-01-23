@@ -13,5 +13,9 @@ export default defineNuxtConfig({
     '@/assets/styles/index.scss'
   ],
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  app: {
+    baseURL: '/homeCraft/',
+    buildAssetsDir: 'assets'
+  }
 })
