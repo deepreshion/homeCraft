@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import 'lightgallery/scss/lightgallery.scss';
 import 'lightgallery/scss/lg-thumbnail.scss';
-import fjGallery from "flickr-justified-gallery";
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import { onMounted } from "vue";
-import lightGallery from "lightgallery";
 
 const plugins = [
   lgThumbnail
@@ -13,53 +11,53 @@ const plugins = [
 const items = [
   {
     id: Math.random(),
-    src: '/images/main.webp',
-    thumb: '/images/main.webp',
+    src:'/homeCraft/images/main.webp',
+    thumb:'/homeCraft/images/main.webp',
   },
   {
     id: Math.random(),
-    src: '/images/j6wz_PwfgCA.jpg',
-    thumb: '/images/j6wz_PwfgCA.jpg',
+    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
+    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
   },
   {
     id: Math.random(),
-    src: '/images/5fa4129180846424792156.jpg',
-    thumb: '/images/5fa4129180846424792156.jpg',
+    src:'/homeCraft/images/5fa4129180846424792156.jpg',
+    thumb:'/homeCraft/images/5fa4129180846424792156.jpg',
   },
   {
     id: Math.random(),
-    src: '/images/main.webp',
-    thumb: '/images/main.webp',
+    src:'/homeCraft/images/main.webp',
+    thumb:'/homeCraft/images/main.webp',
   },
   {
     id: Math.random(),
-    src: '/images/j6wz_PwfgCA.jpg',
-    thumb: '/images/j6wz_PwfgCA.jpg',
+    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
+    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
   },
   {
     id: Math.random(),
-    src: '/images/j6wz_PwfgCA.jpg',
-    thumb: '/images/j6wz_PwfgCA.jpg',
+    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
+    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
   },
   {
     id: Math.random(),
-    src: '/images/main.webp',
-    thumb: '/images/main.webp',
+    src:'/homeCraft/images/main.webp',
+    thumb:'/homeCraft/images/main.webp',
   },
   {
     id: Math.random(),
-    src: '/images/j6wz_PwfgCA.jpg',
-    thumb: '/images/j6wz_PwfgCA.jpg',
+    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
+    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
   },
   {
     id: Math.random(),
-    src: '/images/5fa4129180846424792156.jpg',
-    thumb: '/images/5fa4129180846424792156.jpg',
+    src:'/homeCraft/images/5fa4129180846424792156.jpg',
+    thumb:'/homeCraft/images/5fa4129180846424792156.jpg',
   },
   {
     id: Math.random(),
-    src: '/images/main.webp',
-    thumb: '/images/main.webp',
+    src:'/homeCraft/images/main.webp',
+    thumb:'/homeCraft/images/main.webp',
   },
 ]
 const settings = {
@@ -67,19 +65,29 @@ const settings = {
   plugins: plugins,
 }
 
-onMounted(() => {
-  fjGallery(document.querySelectorAll('#examples-gal'), {
-    itemSelector: '.gallery-item',
-    // rowHeight: 280,
-    // lastRow: 'start',
-    gutter: 2,
-    rowHeightTolerance: 0.1,
-    calculateItemsHeight: false,
-    onJustify: () => {
-      lightGallery(document.getElementById('examples-gal')!, settings)
+onMounted(async () => {
+  if (process.client) {
+    const { default: fjGallery } = await import('flickr-justified-gallery');
+    const { default: lightGallery } = await import('lightgallery');
+
+    const elements = document.querySelectorAll('#examples-gal');
+    console.log(elements)
+    if (elements.length) {
+      fjGallery(elements, {
+        itemSelector: '.gallery-item',
+        gutter: 2,
+        rowHeightTolerance: 0.1,
+        calculateItemsHeight: false,
+        onJustify: () => {
+          const galElement = document.getElementById('examples-gal');
+          if (galElement) {
+            lightGallery(galElement, settings);
+          }
+        }
+      });
     }
-  })
-})
+  }
+});
 
 </script>
 
@@ -97,14 +105,14 @@ onMounted(() => {
           Шкафы
         </div>
       </div>
-      <a
+      <div
         v-for="item in items"
         :key="item.id"
         class="gallery-item"
         :data-src="item.src"
       >
         <img class="img-responsive" :src="item.thumb" />
-      </a>
+      </div>
     </div>
   </div>
 </template>
