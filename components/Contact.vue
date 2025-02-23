@@ -60,14 +60,25 @@
   min-height: 500px;
   position: relative;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    min-height: auto;
+  }
 }
 
 .content {
   background-color: $accent;
   min-height: 80%;
-  height: 400px;
+  height: 320px;
   width: 55%;
   padding: 32px 6% 32px 32px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    padding: 32px;
+  }
 }
 
 .image {
@@ -81,6 +92,10 @@
     height: 100%;
     width: auto;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 body {
@@ -93,7 +108,6 @@ ul {
   padding: 0;
   display: flex;
   padding-top: 20px;
-  display: flex;
   justify-content: center;
 }
 
@@ -106,9 +120,9 @@ ul li {
 
 ul li a {
   position: relative;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
   font-size: 40px;
   text-align: center;
   text-decoration: none;
@@ -119,6 +133,13 @@ ul li a {
   justify-content: center;
   svg {
     max-width: 60%;
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 32px;
   }
 }
 

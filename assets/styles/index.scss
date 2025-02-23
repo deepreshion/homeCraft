@@ -17,6 +17,7 @@ body {
 
 h1, h2 {
   font-family: 'Dela Gothic One', sans-serif;
+  line-height: 1.2;
 }
 
 h2 {
@@ -70,24 +71,67 @@ img {
   color: $green-dark;
 }
 
+.text-green {
+  color: $green;
+}
+.text-dark {
+  color:$dark-text;
+}
+
+.text-grey2 {
+  color: $grey-text2;
+}
+
 .text-grey {
   color: $grey-text;
 }
 
+
 button {
-  font-size: 24px;
-  color: white;
-  text-decoration: none;
+  font-size: 18px;
+  line-height: 28px;
+  color: rgb(255, 255, 255);
+  background-color: $green;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: outset;
+  border-right-style: outset;
+  border-bottom-style: outset;
+  border-left-style: outset;
+  border-top-color: $green;
+  border-right-color: $green;
+  border-bottom-color: $green;
+  border-left-color: $green;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
   cursor: pointer;
-  padding: 8px 42px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 2px solid white;
-  border-radius: 6px;
-  transition: 0.3s linear;
-  display: inline-block;
-  &:hover {
-    color: #65a30d;
-    background-color: white;
-    text-decoration: none;
-  }
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-top: 9px;
+  padding-right: 45px;
+  padding-bottom: 9px;
+  padding-left: 45px;
+  transition: .3s ease-in-out;
+}
+
+button:hover {
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: $green20;
+  color: $green;
 }

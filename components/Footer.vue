@@ -17,5 +17,8 @@
   justify-content: center;
   align-items: center;
   gap: 0.2rem;
+  @media (max-width: 768px) {
+    margin-top: 40px;
+  }
 }
 </style>

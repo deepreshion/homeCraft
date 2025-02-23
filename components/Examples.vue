@@ -1,84 +1,125 @@
 <script setup lang="ts">
 import 'lightgallery/scss/lightgallery.scss';
 import 'lightgallery/scss/lg-thumbnail.scss';
+import 'lightgallery/scss/lg-fullscreen.scss';
+import 'lightgallery/scss/lg-relative-caption.scss';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import { onMounted } from "vue";
+
+const sections = ref([
+  {
+    label: 'Все',
+    value: 'all'
+  },
+  {
+    label: 'Кухни',
+    value: 'kitchens'
+  },
+  {
+    label: 'Диваны',
+    value: 'divan'
+  },
+])
+const activeSection = ref('all')
+
+const items = ref([
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/main.webp',
+    thumb:'/homeCraft/images/main.webp',
+  },
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/divan.png',
+    thumb:'/homeCraft/images/divan.png',
+  },
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/kitchen.png',
+    thumb:'/homeCraft/images/kitchen.png',
+  },
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/main.webp',
+    thumb:'/homeCraft/images/main.webp',
+  },
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/divan.png',
+    thumb:'/homeCraft/images/divan.png',
+  },
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/main.webp',
+    thumb:'/homeCraft/images/main.webp',
+  },
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/divan.png',
+    thumb:'/homeCraft/images/divan.png',
+  },
+  {
+    id: Math.random(),
+    src:'/homeCraft/images/kitchen.png',
+    thumb:'/homeCraft/images/kitchen.png',
+  },
+])
+
+const kitchens = Array.from({ length: 10 }, () => {
+  return  {
+    id: Math.random(),
+    src:'/homeCraft/images/kitchen.png',
+    thumb:'/homeCraft/images/kitchen.png',
+  }
+})
+
+const divan = Array.from({ length: 10 }, () => {
+  return  {
+    id: Math.random(),
+    src:'/homeCraft/images/divan.png',
+    thumb:'/homeCraft/images/divan.png',
+  }
+})
+
+const setFilter = (value: string) => {
+  activeSection.value = value
+  items.value = value === 'all'? items : value === 'kitchens'? kitchens : divan
+  initGallery()
+}
 
 const plugins = [
   lgThumbnail
 ]
 
-const items = [
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/main.webp',
-    thumb:'/homeCraft/images/main.webp',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
-    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/5fa4129180846424792156.jpg',
-    thumb:'/homeCraft/images/5fa4129180846424792156.jpg',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/main.webp',
-    thumb:'/homeCraft/images/main.webp',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
-    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
-    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/main.webp',
-    thumb:'/homeCraft/images/main.webp',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/j6wz_PwfgCA.jpg',
-    thumb:'/homeCraft/images/j6wz_PwfgCA.jpg',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/5fa4129180846424792156.jpg',
-    thumb:'/homeCraft/images/5fa4129180846424792156.jpg',
-  },
-  {
-    id: Math.random(),
-    src:'/homeCraft/images/main.webp',
-    thumb:'/homeCraft/images/main.webp',
-  },
-]
 const settings = {
   speed: 200,
   plugins: plugins,
+  showCloseIcon: true,
+  mobileSettings: {
+    controls: false,
+    showCloseIcon: true,
+    download: false,
+    rotate: false
+  }
 }
 
-onMounted(async () => {
+const initGallery = async () => {
   if (process.client) {
     const { default: fjGallery } = await import('flickr-justified-gallery');
     const { default: lightGallery } = await import('lightgallery');
+    const isMobile = window.innerWidth < 768;
 
     const elements = document.querySelectorAll('#examples-gal');
-    console.log(elements)
+
     if (elements.length) {
       fjGallery(elements, {
         itemSelector: '.gallery-item',
         gutter: 2,
+        rowHeight: isMobile ? 160 : 320,
+        maxRowsCount: isMobile ? 4 : 2,
         rowHeightTolerance: 0.1,
         calculateItemsHeight: false,
-        onJustify: () => {
+        onInit: () => {
           const galElement = document.getElementById('examples-gal');
           if (galElement) {
             lightGallery(galElement, settings);
@@ -87,24 +128,29 @@ onMounted(async () => {
       });
     }
   }
+}
+
+onMounted( () => {
+  initGallery()
 });
 
 </script>
 
 <template>
   <div id="examples">
+    <div class="toggle-block">
+      <h4 class="text-dark">Примеры работ</h4>
+<!--      <div-->
+<!--        v-for="item in sections"-->
+<!--        :key="item.value"-->
+<!--        class="toggle-item"-->
+<!--        :class="{'is-active': activeSection === item.value}"-->
+<!--        @click="setFilter(item.value)"-->
+<!--      >-->
+<!--        {{ item.label }}-->
+<!--      </div>-->
+    </div>
     <div id="examples-gal">
-      <div class="toggle-block">
-        <div class="toggle-item is-active">
-          Кухни
-        </div>
-        <div class="toggle-item">
-          Диваны
-        </div>
-        <div class="toggle-item">
-          Шкафы
-        </div>
-      </div>
       <div
         v-for="item in items"
         :key="item.id"
@@ -119,12 +165,12 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 #examples {
-  background-color: $accent;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-height: 620px;
+  max-height: 640px;
   overflow: hidden;
+  position: relative;
 }
 
 #examples-gal {
@@ -139,9 +185,13 @@ onMounted(async () => {
   left: 20px;
   z-index: 1;
   background-color: rgba(255,255,255, .7);
-  padding: 16px;
+  border-radius: 8px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
+  //h4 {
+  //  margin-bottom: 16px;
+  //}
 }
 
 .toggle-item {
@@ -149,8 +199,9 @@ onMounted(async () => {
   cursor: pointer;
   font-weight: 500;
   transition: 0.3s linear;
+  color: $grey-text2;
   &:not(:last-child) {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   &:hover {
     opacity: .7;

@@ -1,14 +1,5 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
 <div class="banner">
-  <div class="menu">
-    <a href="#intro">Изготовление мебели</a>
-    <a href="#about-us">О нас</a>
-    <a href="#contact">Связь</a>
-  </div>
   <h1 class="title">Индивидуальная <br> мебель</h1>
   <h3 class="subtitle">Все, как <span class="highlight">вы</span> захотите</h3>
   <a class="btn" href="#contact"><button>Написать</button></a>
@@ -17,6 +8,7 @@
 
 <style scoped lang="scss">
 .banner {
+  margin-top: -80px;
   background-image: url('/public/images/main.webp');
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,7 +20,7 @@
   justify-content: center;
   align-items: flex-end;
   flex-direction: column;
-  padding: 30px;
+  padding: 0 30px 30px;
   position: relative;
   &::before {
     content: '';
@@ -60,33 +52,23 @@
   margin-bottom: 24px;
 }
 
-.menu {
-  align-self: center;
-  margin-bottom: auto;
-  display: flex;
-  a {
-    font-size: 18px;
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-    transition: .3s linear;
-    &:hover {
-      color: rgba(255, 255, 255, 0.6);
+@media (max-width: 768px) {
+  .banner {
+    padding: 0 16px 16px;
+  }
+  .title {
+    font-size: clamp(16px, 7vw, 28px);
+    br {
+      display: none;
     }
+  }
 
-    &:not(:last-child) {
-     &::after {
-       content: '';
-       border-right: 1px solid white;
-       margin-left: 12px;
-       margin-right: 12px;
-     }
-    }
+  .subtitle {
+    font-size: 24px;
   }
 }
 
-.btn {
-  margin-bottom: auto;
-}
+@media (max-width: 480px) {
 
+}
 </style>

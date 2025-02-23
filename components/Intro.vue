@@ -4,12 +4,34 @@
 
 <template>
   <div id="intro">
-    <div class="title-block text-darkgreen">
-      <h2>Изготовление мебели на заказ</h2>
-      <h5>Есть идея, как обустроить дом?</h5>
+    <div class="title-block text-dark">
+      <h2 class="text-dark">Изготовление мебели на заказ</h2>
+      <h5 class="text-grey2" style="margin-top: 8px;">Есть идея, как обустроить дом?</h5>
     </div>
     <ul class="timeline">
       <li>
+        <div class="timeline-badge">
+          <svg fill="#fff" viewBox="0 0 16 16" id="request-send-16px">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path id="Path_44" data-name="Path 44"
+                    d="M-18,11a2,2,0,0,0,2-2,2,2,0,0,0-2-2,2,2,0,0,0-2,2A2,2,0,0,0-18,11Zm0-3a1,1,0,0,1,1,1,1,1,0,0,1-1,1,1,1,0,0,1-1-1A1,1,0,0,1-18,8Zm2.5,4h-5A2.5,2.5,0,0,0-23,14.5,1.5,1.5,0,0,0-21.5,16h7A1.5,1.5,0,0,0-13,14.5,2.5,2.5,0,0,0-15.5,12Zm1,3h-7a.5.5,0,0,1-.5-.5A1.5,1.5,0,0,1-20.5,13h5A1.5,1.5,0,0,1-14,14.5.5.5,0,0,1-14.5,15ZM-7,2.5v5A2.5,2.5,0,0,1-9.5,10h-2.793l-1.853,1.854A.5.5,0,0,1-14.5,12a.493.493,0,0,1-.191-.038A.5.5,0,0,1-15,11.5v-2a.5.5,0,0,1,.5-.5.5.5,0,0,1,.5.5v.793l1.146-1.147A.5.5,0,0,1-12.5,9h3A1.5,1.5,0,0,0-8,7.5v-5A1.5,1.5,0,0,0-9.5,1h-7A1.5,1.5,0,0,0-18,2.5v3a.5.5,0,0,1-.5.5.5.5,0,0,1-.5-.5v-3A2.5,2.5,0,0,1-16.5,0h7A2.5,2.5,0,0,1-7,2.5Zm-7.854,3.646L-12.707,4H-14.5a.5.5,0,0,1-.5-.5.5.5,0,0,1,.5-.5h3a.5.5,0,0,1,.191.038.506.506,0,0,1,.271.271A.5.5,0,0,1-11,3.5v3a.5.5,0,0,1-.5.5.5.5,0,0,1-.5-.5V4.707l-2.146,2.147A.5.5,0,0,1-14.5,7a.5.5,0,0,1-.354-.146A.5.5,0,0,1-14.854,6.146Z"
+                    transform="translate(23)"></path>
+            </g>
+          </svg>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">Заявка</h4>
+          </div>
+          <div class="timeline-body">
+            <p>Вы можете оставить заявку по телефону 8-927-815-58-68, 8-927-983-41-16 на сайте или же сделать заявку на
+              "Заказ обратного звонка" и мы сами позвоним Вам.</p>
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
         <div class="timeline-badge">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -32,7 +54,7 @@
           </div>
         </div>
       </li>
-      <li class="timeline-inverted">
+      <li>
         <div class="timeline-badge">
           <svg fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -54,7 +76,7 @@
           </div>
         </div>
       </li>
-      <li>
+      <li class="timeline-inverted">
         <div class="timeline-badge">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -147,36 +169,25 @@
 .timeline > li > .timeline-panel {
   width: 46%;
   float: left;
-  border: 1px solid #d4d4d4;
   border-radius: 2px;
   padding: 20px;
   position: relative;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.timeline > li > .timeline-panel:before {
-  position: absolute;
-  top: 26px;
-  right: -15px;
-  display: inline-block;
-  border-top: 15px solid transparent;
-  border-left: 15px solid #ccc;
-  border-right: 0 solid #ccc;
-  border-bottom: 15px solid transparent;
-  content: " ";
-}
-
-.timeline > li > .timeline-panel:after {
-  position: absolute;
-  top: 27px;
-  right: -14px;
-  display: inline-block;
-  border-top: 14px solid transparent;
-  border-left: 14px solid #fff;
-  border-right: 0 solid #fff;
-  border-bottom: 14px solid transparent;
-  content: " ";
+.timeline > li:first-child {
+  position: relative;
+  .timeline-badge {
+    &::before {
+      content: '';
+      background: #fff;
+      position: absolute;
+      top: -100%;
+      z-index: 1;
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
 
 .timeline > li > .timeline-badge {
@@ -207,28 +218,15 @@
   float: right;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel:before {
-  border-left-width: 0;
-  border-right-width: 15px;
-  left: -15px;
-  right: auto;
-}
-
-.timeline > li.timeline-inverted > .timeline-panel:after {
-  border-left-width: 0;
-  border-right-width: 14px;
-  left: -14px;
-  right: auto;
-}
-
 .timeline-title {
   margin-top: 0;
-  color: inherit;
+  color: $grey-text2;
 }
 
 .timeline-body {
   color: $grey-text;
 }
+
 .timeline-body > p,
 .timeline-body > ul {
   margin-bottom: 0;
@@ -241,4 +239,59 @@
 .timeline-heading {
   margin-bottom: 12px;
 }
+
+@media (max-width: 767px) {
+  .timeline:before {
+    left: 40px;
+  }
+
+  .timeline > li > .timeline-panel {
+    width: calc(100% - 90px);
+    float: right;
+  }
+
+  .timeline > li > .timeline-badge {
+    left: 15px;
+    margin-left: 0;
+    top: 16px;
+  }
+
+  .timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+  }
+
+  .timeline > li.timeline-inverted > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+  }
+
+  .timeline > li.timeline-inverted > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  #intro {
+    margin-top: 30px;
+  }
+
+  .timeline > li > .timeline-panel {
+    padding: 15px;
+    box-shadow: none;
+  }
+
+  .timeline-title {
+    font-size: 18px;
+  }
+
+  .timeline-body > p {
+    font-size: 14px;
+  }
+}
+
 </style>
