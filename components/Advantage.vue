@@ -105,7 +105,7 @@ import { faBoxOpen, faWallet, faPencilRuler, faLightbulb, faHome, faHeadset } fr
 
   .icon-box {
     font-size: 42px;
-    color: $green;
+    color: $main;
   }
 
   .row {

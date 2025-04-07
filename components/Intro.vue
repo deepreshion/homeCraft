@@ -201,7 +201,7 @@
   top: 16px;
   left: 50%;
   margin-left: -25px;
-  background-color: $green;
+  background-color: $main;
   z-index: 100;
   border-radius: 50%;
   display: flex;

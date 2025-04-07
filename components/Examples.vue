@@ -138,8 +138,8 @@ onMounted( () => {
 
 <template>
   <div id="examples">
-    <div class="toggle-block">
-      <h4 class="text-dark">Примеры работ</h4>
+<!--    <div class="toggle-block">-->
+<!--      <h4 class="text-dark">Примеры работ</h4>-->
 <!--      <div-->
 <!--        v-for="item in sections"-->
 <!--        :key="item.value"-->
@@ -149,7 +149,7 @@ onMounted( () => {
 <!--      >-->
 <!--        {{ item.label }}-->
 <!--      </div>-->
-    </div>
+<!--    </div>-->
     <div id="examples-gal">
       <div
         v-for="item in items"

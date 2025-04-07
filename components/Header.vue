@@ -36,6 +36,7 @@ onUnmounted(() => {
 
 <template>
   <div class="menu" :class="['is-header', isScrolled ? 'is-scrolled' : '']">
+    <img src="/images/selena_logo.png" alt="Селена" class="logo">
     <nav class="menu-items">
       <div class="desktop-menu">
         <a href="#intro">Изготовление мебели</a>
@@ -80,6 +81,13 @@ onUnmounted(() => {
   background-color: transparent;
   position: sticky;
   height: 80px;
+  .logo {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    height: 60px;
+    width: auto;
+  }
   .menu-items {
     transition: .3s ease-in;
     display: flex;

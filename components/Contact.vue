@@ -68,7 +68,7 @@
 }
 
 .content {
-  background-color: $accent;
+  background-color: $main20;
   min-height: 80%;
   height: 320px;
   width: 55%;
@@ -213,14 +213,14 @@ ul li a:hover span:nth-child(4) {
 }
 
 ul li a:hover {
-  color: $green;
+  color: $main;
   svg {
-    fill: $green
+    fill: $main
   }
 }
 
 ul li a:hover span {
-  background: $green;
+  background: $main;
 }
 
 </style>
