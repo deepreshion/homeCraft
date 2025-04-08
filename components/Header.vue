@@ -76,7 +76,6 @@ onUnmounted(() => {
   z-index: 1000;
   padding: 30px;
   transition: .2s ease-in;
-  overflow: hidden;
   justify-content: center;
   background-color: transparent;
   position: sticky;
@@ -220,6 +219,11 @@ onUnmounted(() => {
     width: 80px;
     margin-left: auto;
     padding: 25px;
+
+    .logo {
+      display: none;
+    }
+
     .menu-items {
       justify-content: flex-end;
     }

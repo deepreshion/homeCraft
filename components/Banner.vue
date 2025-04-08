@@ -1,5 +1,6 @@
 <template>
 <div class="banner">
+  <img src="/images/selena_logo.png" alt="Селена" class="mobile-logo">
   <h1 class="title">Индивидуальная <br> мебель</h1>
   <h3 class="subtitle">Все, как <span class="highlight">вы</span> захотите</h3>
   <a class="btn" href="#contact"><button>Написать</button></a>
@@ -38,7 +39,7 @@
 }
 
 .title {
-  font-size: clamp(48px, 7vw, 120px);
+  font-size: clamp(32px, 6.5vw, 120px);
   line-height: 1;
   letter-spacing: .05em;
   text-transform: uppercase;
@@ -52,12 +53,22 @@
   margin-bottom: 24px;
 }
 
+.mobile-logo {
+  width: 140px;
+  padding-top: 20px;
+  align-self: center;
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .banner {
     padding: 0 16px 16px;
   }
   .title {
-    font-size: clamp(16px, 7vw, 28px);
+    font-size: clamp(14px, 6vw, 28px);
+    margin-top: auto;
     br {
       display: none;
     }
@@ -65,6 +76,10 @@
 
   .subtitle {
     font-size: 24px;
+  }
+
+  .btn {
+    margin-bottom: auto;
   }
 }
 
